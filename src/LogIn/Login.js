@@ -14,6 +14,7 @@ function Login() {
                 <FaSpotify className="spotify-icon" />
                 <h1>Spotify Wrapped</h1>
             </div>
+            <h6 className="author-credits">Original idea by: bhushan6</h6>
             <div className="tag-line" style={{ overflow: "hidden" }}>
                 <motion.p
                     initial={{ y: "125%" }}
@@ -27,7 +28,7 @@ function Login() {
                     Listening is Everything
                 </motion.p>
             </div>
-            <a href={login_uri}>LogIn with Spotify</a>
+            <a href={login_uri}>Login with Spotify</a>
         </div>
     )
 }

@@ -67,6 +67,12 @@
   font-size: 1.5em;
 }
 
+.author-credits{
+  font-size: 12px;
+  display: block;
+  color: white;
+}
+
 @media (orientation: portrait) {
   .logo {
     width: 70vw;

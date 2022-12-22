@@ -290,7 +290,7 @@ function TopArtist({ spotify }) {
                     </div>
                     <div className="text">
                         <div>
-                            <motion.h2 variants={artistInfo} initial="in" animate="anim" exit="out">The most streamed<br />artist of 2020:</motion.h2>
+                            <motion.h2 variants={artistInfo} initial="in" animate="anim" exit="out">The most streamed<br />artist of 2022:</motion.h2>
                         </div>
                         <div style={{ transform: "translateZ(75px)" }}>
                             <motion.h1

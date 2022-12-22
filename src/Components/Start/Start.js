@@ -129,7 +129,7 @@ function Start({ spotify }) {
                             <br />
                             <motion.div variants={text} > Spotify</motion.div>
                             <motion.div variants={text} > in</motion.div>
-                            <motion.div variants={text} > 2020</motion.div>
+                            <motion.div variants={text} > 2022</motion.div>
                             <motion.div variants={text} >.</motion.div>
                         </motion.h1>
                     </motion.div>
