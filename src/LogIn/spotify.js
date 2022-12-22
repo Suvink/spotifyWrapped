@@ -1,7 +1,7 @@
 
 
 const authrise_uri = "https://accounts.spotify.com/authorize"
-const client_id = process.env.SPOTIFY_CLIENT_ID
+const client_id = process.env.REACT_APP_SPOTIFY_CLIENT_ID
 const redirect_uri = "https://wrapped.suvin.me"
 const scope = [
     "user-top-read",
