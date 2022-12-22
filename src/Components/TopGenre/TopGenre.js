@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './TopGenre.css'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import Ring from './ring'
 import { v4 as uuidv4 } from 'uuid';
-import {Link} from 'react-router-dom'
-import {FaChevronDown, FaChevronUp} from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
-function TopGenre({spotify}) {
+function TopGenre({ spotify }) {
     const [genre, setGenre] = useState([])
     const [allGenre, setAllGenre] = useState([])
     const [loaded, setLoaded] = useState(false)
@@ -17,10 +17,10 @@ function TopGenre({spotify}) {
     const percent = [60, 55, 50, 45, 40]
 
     const stagger = {
-        in : {
+        in: {
             // height: "100%"
         },
-        anim : {
+        anim: {
             transition: {
                 staggerChildren: 1,
             }
@@ -28,21 +28,21 @@ function TopGenre({spotify}) {
     }
 
     const staggerTwo = {
-        in : {
-            opacity:1
+        in: {
+            opacity: 1
         },
         anim: {
-            height:"0%",
+            height: "0%",
             transition: {
                 duration: 0.7,
-                delay:2.5
+                delay: 2.5
             }
         }
     }
 
     const slideUp = {
-        in : {y: "150%"},
-        anim : {
+        in: { y: "150%" },
+        anim: {
             y: "0%",
             transition: {
                 duration: 1
@@ -50,16 +50,16 @@ function TopGenre({spotify}) {
         }
     }
 
-    async function getGenre(){
+    async function getGenre() {
         const resp = await spotify.getMyTopArtists()
         const artists = resp.items
         const allGenres = []
-        artists.map(item => { allGenres.push(...item.genres)})
+        artists.map(item => { allGenres.push(...item.genres) })
         const letter = allGenre.map(a => a.length)
-        setLetters(letter.reduce((a, b) => a+b, 0))
+        setLetters(letter.reduce((a, b) => a + b, 0))
         setAllGenre(allGenres)
-        const misxedGenres = artists.map(item => {return item.genres[0]})
-        const topGenre = misxedGenres.filter(function(item, pos) {
+        const misxedGenres = artists.map(item => { return item.genres[0] })
+        const topGenre = misxedGenres.filter(function (item, pos) {
             return misxedGenres.indexOf(item) == pos;
         })
         setGenre(topGenre)
@@ -70,10 +70,10 @@ function TopGenre({spotify}) {
         getGenre()
     }, [])
 
-    
+
     return (
         <motion.div className="TopGenre" >
-            <motion.div 
+            <motion.div
                 className="initial-animate"
                 variants={stagger}
                 initial="in"
@@ -82,7 +82,7 @@ function TopGenre({spotify}) {
                     document.querySelector(".initial-animate").classList.add("display-none")
                     document.querySelector('.h1').classList.add('slideUp')
                 }}
-                >
+            >
                 <motion.div
                     className="textOne"
                     variants={staggerTwo}
@@ -95,34 +95,34 @@ function TopGenre({spotify}) {
                     className="textTwo"
                     variants={staggerTwo}
                 >
-                   <motion.div variants={slideUp}>
+                    <motion.div variants={slideUp}>
                         You refused to let one sound define you.
-                   </motion.div>
+                    </motion.div>
                 </motion.div>
             </motion.div>
-             <div className="title">
-                 <h1 className="h1">Your top genres were</h1>
-             </div>
+            <div className="title">
+                <h1 className="h1">Your top genres were</h1>
+            </div>
             <motion.div className="top-genre-chart-cont">
-                {loaded? genre.slice(0, 5).map((item, index) => (
-                    <Ring dia={diaArray[index]} genre={item} key={uuidv4()} percent={percent[index]}/>
+                {loaded ? genre.slice(0, 5).map((item, index) => (
+                    <Ring dia={diaArray[index]} genre={item} key={uuidv4()} percent={percent[index]} />
                 )) : null}
             </motion.div>
             <div className="genre-bg">
-                <h1 style={loaded? {fontSize:`${100/(letters/35)}vw`} : {fontSize: "6.5vw"}}>{loaded? allGenre.map(item => {return `${item} `}) : null}</h1>
+                <h1 style={loaded ? { fontSize: `${100 / (letters / 35)}vw` } : { fontSize: "6.5vw" }}>{loaded ? allGenre.map(item => { return `${item} ` }) : null}</h1>
             </div>
-            <motion.div className="pagination" initial={{opacity:0}} animate={{ opacity:1}} exit={{opacity:0}} transition={{duration:1}}>
+            <motion.div className="pagination" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
                 <div className="prev">
                     <Link to="/top_five_songs">
-                        <FaChevronUp style={{color:"white"}}/>
+                        <FaChevronUp style={{ color: "white" }} />
                     </Link>
                 </div>
                 <div className="page-no">
                     <p><span>4</span> / 4</p>
                 </div>
-                <div className="next" style={{opacity:0, pointerEvents: "none"}}>
+                <div className="next" style={{ opacity: 0, pointerEvents: "none" }}>
                     <Link to="/">
-                        <FaChevronDown style={{color:"white"}}/>
+                        <FaChevronDown style={{ color: "white" }} />
                     </Link>
                 </div>
             </motion.div>

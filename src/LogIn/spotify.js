@@ -1,8 +1,8 @@
 
 
 const authrise_uri = "https://accounts.spotify.com/authorize"
-const client_id = "bc8e279b33434ef3bae55ba52b621c44"
-const redirect_uri = "https://spotify-wrapped.herokuapp.com/"
+const client_id = process.env.SPOTIFY_CLIENT_ID
+const redirect_uri = "https://wrapped.suvin.me"
 const scope = [
     "user-top-read",
     "user-read-email",
